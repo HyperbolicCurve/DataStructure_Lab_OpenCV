@@ -5,43 +5,32 @@
 #include <opencv2/opencv.hpp>     // OpenCV计算机视觉库
 #include "poisson.h"            // 包括一个自定义的头文件（假设它包含了相关的声明）
 #include <ctime>
+#define desired_samples1 100000   // 所需样本数
 using namespace cv;
 using namespace std;
 
 // 函数：生成一个随机颜色，给定一个整数值
 Vec3b RandomColor(int value);
-
+Vector2 samples_[desired_samples1]; // 用于存储生成的样本的数组
 //计算main函数运行时间
 
-int main( int argc, char* argv[] )
+int main( )
 {
+    int num_samples = 0;
     clock_t start,end;
     // 禁用OpenCV的日志输出，以减少控制台输出
     utils::logging::setLogLevel(utils::logging::LOG_LEVEL_SILENT);
 
-    start = clock();
     // 从文件中读取一张图像
     Mat image = imread("E:\\RC.jpg");
-    imshow("The Origin image", image);
-
-    // 将图像转换为灰度图
-    //Mat imageGray;
-    //cvtColor(image, imageGray, COLOR_RGB2GRAY);
-
-    // 对灰度图应用高斯模糊
-    //GaussianBlur(imageGray, imageGray, Size(5, 5), 2);
-    //imshow("Gray image", imageGray);
-
-    // 对灰度图应用Canny边缘检测
-    //Canny(imageGray, imageGray, 80, 150);
-    //imshow("Canny edge-detected image", imageGray);
 
     // 创建一个矩阵来存储分水岭算法的标记
     Mat marks(image.size(), CV_32S);
     marks = Scalar::all(0);
 
     // 调用一个自定义函数来使用泊松盘采样找到点
-    findPoint(marks);
+    findPoint(marks, samples_, &num_samples, &start);
+    imshow("The Origin image", image);
 
     // 应用分水岭算法对图像进行分割
     watershed(image, marks);
@@ -49,7 +38,6 @@ int main( int argc, char* argv[] )
     // 创建一个用于分水岭算法结果的矩阵
     Mat afterWatershed;
     convertScaleAbs(marks, afterWatershed);
-    //imshow("Watershed image", afterWatershed);
 
     // 创建一个用于以随机颜色可视化分割区域的图像
     Mat PerspectiveImage = Mat::zeros(image.size(), CV_8UC3);
@@ -63,14 +51,22 @@ int main( int argc, char* argv[] )
             }
         }
     }
-    //imshow("Final Watershed image", PerspectiveImage);
 
     // 创建原始图像和分割结果的加权组合
     Mat wshed;
     addWeighted(image, 0.4, PerspectiveImage, 0.6, 0, wshed);
+
+    // 在最终图像所分割的区域进行数字编号
+    cv::Point point;
+    for (int i = 0; i < num_samples; i++) {
+        point.x = (int)(samples_[i].x * 600);
+        point.y = (int)(samples_[i].y * 600);
+        circle(wshed, point, 3, Scalar(0, 0, 255), -1, 8, 0);
+        putText(wshed, to_string(i + 1), point, FONT_HERSHEY_SIMPLEX, 0.3, Scalar(255, 255, 255), 1);
+    }
     imshow("Final", wshed);
     end = clock();
-    cout << "Time "<<(double)(end-start)/CLOCKS_PER_SEC<<endl;
+    cout << "Time "<<(double)(end-start)/CLOCKS_PER_SEC<<"s"<<endl;
     // 等待按键以保持窗口打开
     waitKey();
 }

@@ -7,6 +7,8 @@ add_executable(OpenCV
         poisson.cpp
         poisson.h
         Watershed.cpp
+        4_Color.cpp
+        4_Color.h
 )
 
 set(OpenCV_DIR E:/OpenCV/opencv/MinGW-build/install)
