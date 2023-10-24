@@ -19,12 +19,18 @@ ensuring that the distance between each seed point is greater than `sqrt(M*N/K)`
 The program then marks the positions and assigns numbers to each seed point on the original image. The result of the Watershed algorithm is 
 visualized with a semi-transparent effect and random coloring.
 
+![image](https://github.com/Windblowing-china/DataStructure_Lab_OpenCV/assets/60433594/519d0267-103f-4681-a93a-854c51403a14)
+
+
 ## Project 2-四原图着色
 
 使用邻接表统计分水岭结果中各区域的邻接关系，并采用四原色法(合理选择初始着色区域，并基于图的广度优先遍历，采用队列对其他待着色区域进行着色顺利
 梳理，加速全图着色过程)，对分水岭的结果重新着色（使用堆栈+回溯策略，优化回退率）。
 
 Using an adjacency list, the watershed results are analyzed to determine the neighboring relationships between different regions. The four-color theorem is applied, with a careful choice of the initial coloring regions. Based on a breadth-first search of the graph, a queue is used to efficiently color the remaining regions, speeding up the overall coloring process. This recolors the watershed results using a stack and a backtracking strategy to optimize the rate of backtracking.
+
+![image](https://github.com/Windblowing-china/DataStructure_Lab_OpenCV/assets/60433594/eb382c5f-5f25-4995-84d9-86d7607165aa)
+
 
 ## Project 3-排序查找+哈夫曼
 
@@ -33,3 +39,4 @@ Using an adjacency list, the watershed results are analyzed to determine the nei
 
 Based on the heap-sorted results of the areas of regions in the watershed outcome, the program provides information about the largest and smallest areas. Users can input a search range defined by lower and upper area bounds. Using binary search, the program highlights all watershed results (marked region areas) that meet the specified criteria. It uses the highlighted region areas as weights to construct a Huffman tree, considering depth and recursive strategies. The program then visualizes the Huffman tree.
 
+![image](https://github.com/Windblowing-china/DataStructure_Lab_OpenCV/assets/60433594/6119c262-70fc-459e-a337-4e5a4d04698b)
