@@ -5,6 +5,8 @@ School of Huazhong University of Science and Technology.
 
 Department of Artificial Intelligence and Automation.
 
+<font color="使用前记得修改CMakeLists.txt中OpenCV库的路径以及Watershed.Cpp中图片路径">这段文字将显示为红色字体。</font>
+
 There are three projects to be completed:
 
 ## Project 1-均匀随机采样
