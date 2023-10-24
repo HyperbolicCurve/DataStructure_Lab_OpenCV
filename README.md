@@ -1,6 +1,8 @@
 # DataStructure_Lab_OpenCV
 This project contains my lab of Data Structure and Algorithm 2023 with OpenCV(cpp version).
+
 School of Huazhong University of Science and Technology.
+
 Department of Artificial Intelligence and Automation.
 
 There are three projects to be completed:
