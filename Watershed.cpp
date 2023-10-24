@@ -4,6 +4,7 @@
 #include <iostream>               // C++输入/输出流
 #include <opencv2/opencv.hpp>     // OpenCV计算机视觉库
 #include "poisson.h"            // 包括一个自定义的头文件（假设它包含了相关的声明）
+#include "4_Color.h"
 #include <ctime>
 #define desired_samples1 100000   // 所需样本数
 using namespace cv;
@@ -34,6 +35,27 @@ int main( )
 
     // 应用分水岭算法对图像进行分割
     watershed(image, marks);
+
+    // 构建邻接表
+    std::unordered_map<int, Node_1> adjacencyList = BuildAdjacencyList(marks);
+    // 存储邻接关系
+    std::unordered_map<int, std::vector<int>> adjacencyRelations;
+    // 执行广度优先搜索
+    for (const auto& entry : adjacencyList) {
+        int label = entry.first;
+        BFS(adjacencyList, label, adjacencyRelations);
+    }
+    // 输出各区域的邻接关系
+    for (const auto& entry : adjacencyRelations) {
+        int label = entry.first;
+        const std::vector<int>& neighbors = entry.second;
+
+        std::cout << "区域 " << label << " 的邻接区域有：";
+        for (int neighbor : neighbors) {
+            std::cout << neighbor << " ";
+        }
+        std::cout << std::endl;
+    }
 
     // 创建一个用于分水岭算法结果的矩阵
     Mat afterWatershed;
