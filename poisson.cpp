@@ -1,8 +1,7 @@
 #include "poisson.h"
-// 定义常量和数据结构
 #define desired_samples1 100000   // 所需样本数
-
-int grid_n;                      // 网格大小
+#define TestNum 100                // 每个样本的测试次数
+int grid_n;                       // 网格大小
 
 double dx, inv_dx, radius;       // 用于圆盘采样的变量
 // 检查样本之间是否发生碰撞的函数
@@ -38,14 +37,14 @@ int poisson_disk_sample(int desired_samples, int **grid, Vector2 samples[]) {
         Vector2 source_x = samples[head];
         head++;
         double theta = 0;
-        for (int count = 0; count < 60; count++) {
+        for (int count = 0; count < TestNum; count++) {
             std::random_device rd;//随机数引擎
             std::mt19937 engine(rd());//随机数种子
             std::uniform_real_distribution<float> dist(0.0f, 1.0f);
             if (count == 0) {
                 theta = dist(engine) * 2 * M_PI;
             } else {
-                theta += 2 * M_PI / 60;
+                theta += 2 * M_PI / TestNum;
             }
             double offset = (1.0f) * radius;
             Vector2 new_x;

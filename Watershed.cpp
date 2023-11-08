@@ -12,8 +12,10 @@ using namespace std;
 
 //函数：生成一个随机颜色，给定一个整数值
 Vec3b RandomColor(int value);
-Vector2 samples_[desired_samples1]; // 用于存储生成的样本的数组
-//计算main函数运行时间
+//函数：根据整数值生成颜色
+Vec3b FourColor(int value);
+// 用于存储生成的样本的数组
+Vector2 samples_[desired_samples1];
 
 int main( )
 {
@@ -36,22 +38,12 @@ int main( )
     // 应用分水岭算法对图像进行分割
     watershed(image, marks);
 
-	// 测试函数
-	cout << "LabelTest(122, 155, marks) = " << LabelTest(122, 155, marks) << endl;
  	// 构建邻接表
     std::unordered_map<int, Node_1> adjacencyList = BuildAdjacencyList(marks);
-    // 输出各区域的邻接关系
-	for (auto& node : adjacencyList) {
-		std::cout << "Label: " << node.first << std::endl;
-		std::cout << "Area: " << node.second.area << std::endl;
-		std::cout << "Neighbors: ";
-		for (int neighborLabel : node.second.neighbors) {
-			std::cout << neighborLabel << " ";
-		}
-		std::cout << std::endl;
-	}
+	// 使用回溯法为图着色
+	//GraphColoring(adjacencyList, num_samples);
 
-	//创建一个用于分水岭算法结果的矩阵
+	// 创建一个用于分水岭算法结果的矩阵
 	Mat afterWatershed;
     convertScaleAbs(marks, afterWatershed);
 	//创建一个用于以随机颜色可视化分割区域的图像
@@ -95,4 +87,21 @@ Vec3b RandomColor(int value)
     int bb = rng.uniform(0, value);
     int cc = rng.uniform(0, value);
     return Vec3b(aa, bb, cc);
+}
+
+// 涂色函数，1-4分别代表四种颜色：红、绿、蓝、黄
+Vec3b FourColor(int value)
+{
+	switch (value) {
+		case 1:
+			return Vec3b(0, 0, 255);    // 红色
+		case 2:
+			return Vec3b(0, 255, 0);    // 绿色
+		case 3:
+			return Vec3b(255, 0, 0);    // 蓝色
+		case 4:
+			return Vec3b(0, 255, 255);  // 黄色
+		default:
+			return Vec3b(0, 0, 0);      // 黑色
+	}
 }
