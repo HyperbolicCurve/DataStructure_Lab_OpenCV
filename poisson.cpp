@@ -100,7 +100,7 @@ int findPoint(cv::Mat marks, Vector2 samples[], int* num_samples, clock_t *start
     }
     delete[] grid;
 
-    //示生成的样本
+    //显示生成的样本
     printf("Number Sample:%d\n", *num_samples);
     cv::Point point;
     for (int i = 0; i < *num_samples; i++) {

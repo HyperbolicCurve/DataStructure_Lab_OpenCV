@@ -4,47 +4,40 @@
 
 #include "4_Color.h"
 
+// 测试函数】
+int LabelTest(int rows, int cols, const cv::Mat& watershedResult)
+{
+	return watershedResult.at<int>(rows, cols);
+}
+
 // 构建邻接表
 std::unordered_map<int, Node_1> BuildAdjacencyList(const cv::Mat& watershedResult)
 {
     std::unordered_map<int, Node_1> adjacencyList;
-    // 遍历图像像素
+    // 遍历图像像素,如果像素值非-1，则计算其面积，将其加入邻接表
+	// 如果像素值为-1，则进行邻接关系的检查
     for (int y = 0; y < watershedResult.rows; y++) {
         for (int x = 0; x < watershedResult.cols; x++) {
-            int label = watershedResult.at<int>(x, y);
-            std::unordered_map<int, bool> processedLabels; // 用于跟踪已处理的label
-            if (label == -1 ) {
-                Node_1& currentNode = adjacencyList[label];
-                // 检查像素周围的像素
-                int nx1 = x - 1;
-                int nx2 = x + 1;
-                int ny1 = y + 1;
-                int ny2 = y + 1;
-                if(nx1 >= 0 && nx2 < watershedResult.cols &&  watershedResult.at<int>(nx1, y) != watershedResult.at<int>(nx2, y))
-                {
-                    Node_1& currentNode1 = adjacencyList[watershedResult.at<int>(nx1, y)];
-                    Node_1& currentNode2 = adjacencyList[watershedResult.at<int>(nx2, y)];
-                    //判断currentNode1的邻居中是否含有currentNode2的标签，如果没有，添加到currentNode1的邻居
-                    if (std::find(currentNode1.neighbors.begin(), currentNode1.neighbors.end(), currentNode2.label) == currentNode1.neighbors.end()) {
-                        currentNode1.neighbors.push_back(currentNode2.label);
-                    }
-                    if (std::find(currentNode2.neighbors.begin(), currentNode2.neighbors.end(), currentNode1.label) == currentNode2.neighbors.end()) {
-                        currentNode2.neighbors.push_back(currentNode1.label);
-                    }
-                }
-                if(ny1 >= 0 && ny2 < watershedResult.rows && watershedResult.at<int>(x, ny1) != watershedResult.at<int>(x, ny2))
-                {
-                    Node_1& currentNode1 = adjacencyList[watershedResult.at<int>(x, ny1)];
-                    Node_1& currentNode2 = adjacencyList[watershedResult.at<int>(x, ny2)];
-                    //判断currentNode1的邻居中是否含有currentNode2的标签，如果没有，添加到currentNode1的邻居
-                    if (std::find(currentNode1.neighbors.begin(), currentNode1.neighbors.end(), currentNode2.label) == currentNode1.neighbors.end()) {
-                        currentNode1.neighbors.push_back(currentNode2.label);
-                    }
-                    if (std::find(currentNode2.neighbors.begin(), currentNode2.neighbors.end(), currentNode1.label) == currentNode2.neighbors.end()) {
-                        currentNode2.neighbors.push_back(currentNode1.label);
-                    }
-                }
-            }
+            if(watershedResult.at<int>(y, x) != -1) {
+				int label = watershedResult.at<int>(y, x);
+				if (adjacencyList.find(label) == adjacencyList.end()) {
+					Node_1 node;
+					node.label = label;
+					node.area = 1;
+					adjacencyList[label] = node;
+				} else {
+					adjacencyList[label].area++;
+				}
+			} else {
+				if(y - 1 >= 0 && x - 1 >= 0){
+					int label_1 = watershedResult.at<int>(y, x - 1);
+					int label_2 = watershedResult.at<int>(y - 1, x);
+					if (label_2 != -1 && label_1 != -1 && label_1 != label_2){
+						adjacencyList[label_1].neighbors.insert(label_2);
+						adjacencyList[label_2].neighbors.insert(label_1);
+					}
+				}
+			}
         }
     }
     return adjacencyList;

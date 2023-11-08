@@ -1,84 +1,77 @@
 //
 // Created by Hyper on 27/09/2023.
 //
-#include <iostream>               // C++è¾“å…¥/è¾“å‡ºæµ
-#include <opencv2/opencv.hpp>     // OpenCVè®¡ç®—æœºè§†è§‰åº“
-#include "poisson.h"            // åŒ…æ‹¬ä¸€ä¸ªè‡ªå®šä¹‰çš„å¤´æ–‡ä»¶ï¼ˆå‡è®¾å®ƒåŒ…å«äº†ç›¸å…³çš„å£°æ˜ï¼‰
+#include <iostream>               // C++ÊäÈë/Êä³öÁ÷
+#include <opencv2/opencv.hpp>     // OpenCV¼ÆËã»úÊÓ¾õ¿â
+#include "poisson.h"            // °üÀ¨Ò»¸ö×Ô¶¨ÒåµÄÍ·ÎÄ¼ş£¨¼ÙÉèËü°üº¬ÁËÏà¹ØµÄÉùÃ÷£©
 #include "4_Color.h"
 #include <ctime>
-#define desired_samples1 100000   // æ‰€éœ€æ ·æœ¬æ•°
+#define desired_samples1 100000   // ËùĞèÑù±¾Êı
 using namespace cv;
 using namespace std;
 
-// å‡½æ•°ï¼šç”Ÿæˆä¸€ä¸ªéšæœºé¢œè‰²ï¼Œç»™å®šä¸€ä¸ªæ•´æ•°å€¼
+//º¯Êı£ºÉú³ÉÒ»¸öËæ»úÑÕÉ«£¬¸ø¶¨Ò»¸öÕûÊıÖµ
 Vec3b RandomColor(int value);
-Vector2 samples_[desired_samples1]; // ç”¨äºå­˜å‚¨ç”Ÿæˆçš„æ ·æœ¬çš„æ•°ç»„
-//è®¡ç®—mainå‡½æ•°è¿è¡Œæ—¶é—´
+Vector2 samples_[desired_samples1]; // ÓÃÓÚ´æ´¢Éú³ÉµÄÑù±¾µÄÊı×é
+//¼ÆËãmainº¯ÊıÔËĞĞÊ±¼ä
 
 int main( )
 {
     int num_samples = 0;
     clock_t start,end;
-    // ç¦ç”¨OpenCVçš„æ—¥å¿—è¾“å‡ºï¼Œä»¥å‡å°‘æ§åˆ¶å°è¾“å‡º
+	//½ûÓÃOpenCVµÄÈÕÖ¾Êä³ö£¬ÒÔ¼õÉÙ¿ØÖÆÌ¨Êä³ö
     utils::logging::setLogLevel(utils::logging::LOG_LEVEL_SILENT);
 
-    // ä»æ–‡ä»¶ä¸­è¯»å–ä¸€å¼ å›¾åƒ
+     //´ÓÎÄ¼şÖĞ¶ÁÈ¡Ò»ÕÅÍ¼Ïñ
     Mat image = imread("E:\\RC.jpg");
 
-    // åˆ›å»ºä¸€ä¸ªçŸ©é˜µæ¥å­˜å‚¨åˆ†æ°´å²­ç®—æ³•çš„æ ‡è®°
+    // ´´½¨Ò»¸ö¾ØÕóÀ´´æ´¢·ÖË®ÁëËã·¨µÄ±ê¼Ç
     Mat marks(image.size(), CV_32S);
     marks = Scalar::all(0);
 
-    // è°ƒç”¨ä¸€ä¸ªè‡ªå®šä¹‰å‡½æ•°æ¥ä½¿ç”¨æ³Šæ¾ç›˜é‡‡æ ·æ‰¾åˆ°ç‚¹
+    // µ÷ÓÃÒ»¸ö×Ô¶¨Òåº¯ÊıÀ´Ê¹ÓÃ²´ËÉÅÌ²ÉÑùÕÒµ½µã
     findPoint(marks, samples_, &num_samples, &start);
     imshow("The Origin image", image);
 
-    // åº”ç”¨åˆ†æ°´å²­ç®—æ³•å¯¹å›¾åƒè¿›è¡Œåˆ†å‰²
+    // Ó¦ÓÃ·ÖË®ÁëËã·¨¶ÔÍ¼Ïñ½øĞĞ·Ö¸î
     watershed(image, marks);
 
-    // æ„å»ºé‚»æ¥è¡¨
+	// ²âÊÔº¯Êı
+	cout << "LabelTest(122, 155, marks) = " << LabelTest(122, 155, marks) << endl;
+ 	// ¹¹½¨ÁÚ½Ó±í
     std::unordered_map<int, Node_1> adjacencyList = BuildAdjacencyList(marks);
-    // å­˜å‚¨é‚»æ¥å…³ç³»
-    std::unordered_map<int, std::vector<int>> adjacencyRelations;
-    // æ‰§è¡Œå¹¿åº¦ä¼˜å…ˆæœç´¢
-    for (const auto& entry : adjacencyList) {
-        int label = entry.first;
-        BFS(adjacencyList, label, adjacencyRelations);
-    }
-    // è¾“å‡ºå„åŒºåŸŸçš„é‚»æ¥å…³ç³»
-    for (const auto& entry : adjacencyRelations) {
-        int label = entry.first;
-        const std::vector<int>& neighbors = entry.second;
+    // Êä³ö¸÷ÇøÓòµÄÁÚ½Ó¹ØÏµ
+	for (auto& node : adjacencyList) {
+		std::cout << "Label: " << node.first << std::endl;
+		std::cout << "Area: " << node.second.area << std::endl;
+		std::cout << "Neighbors: ";
+		for (int neighborLabel : node.second.neighbors) {
+			std::cout << neighborLabel << " ";
+		}
+		std::cout << std::endl;
+	}
 
-        std::cout << "åŒºåŸŸ " << label << " çš„é‚»æ¥åŒºåŸŸæœ‰ï¼š";
-        for (int neighbor : neighbors) {
-            std::cout << neighbor << " ";
-        }
-        std::cout << std::endl;
-    }
-
-    // åˆ›å»ºä¸€ä¸ªç”¨äºåˆ†æ°´å²­ç®—æ³•ç»“æœçš„çŸ©é˜µ
-    Mat afterWatershed;
+	//´´½¨Ò»¸öÓÃÓÚ·ÖË®ÁëËã·¨½á¹ûµÄ¾ØÕó
+	Mat afterWatershed;
     convertScaleAbs(marks, afterWatershed);
-
-    // åˆ›å»ºä¸€ä¸ªç”¨äºä»¥éšæœºé¢œè‰²å¯è§†åŒ–åˆ†å‰²åŒºåŸŸçš„å›¾åƒ
+	//´´½¨Ò»¸öÓÃÓÚÒÔËæ»úÑÕÉ«¿ÉÊÓ»¯·Ö¸îÇøÓòµÄÍ¼Ïñ
     Mat PerspectiveImage = Mat::zeros(image.size(), CV_8UC3);
     for (int i = 0; i < marks.rows; i++) {
         for (int j = 0; j < marks.cols; j++) {
             int index = marks.at<int>(i, j);
             if (marks.at<int>(i, j) == -1) {
-                PerspectiveImage.at<Vec3b>(i, j) = Vec3b(255, 255, 255); // æœªæ ‡è®°åŒºåŸŸä½¿ç”¨ç™½è‰²
+                PerspectiveImage.at<Vec3b>(i, j) = Vec3b(255, 255, 255); // Î´±ê¼ÇÇøÓòÊ¹ÓÃ°×É«
             } else {
                 PerspectiveImage.at<Vec3b>(i, j) = RandomColor(index);
             }
         }
     }
 
-    // åˆ›å»ºåŸå§‹å›¾åƒå’Œåˆ†å‰²ç»“æœçš„åŠ æƒç»„åˆ
+    // ´´½¨Ô­Ê¼Í¼ÏñºÍ·Ö¸î½á¹ûµÄ¼ÓÈ¨×éºÏ
     Mat wshed;
     addWeighted(image, 0.4, PerspectiveImage, 0.6, 0, wshed);
 
-    // åœ¨æœ€ç»ˆå›¾åƒæ‰€åˆ†å‰²çš„åŒºåŸŸè¿›è¡Œæ•°å­—ç¼–å·
+    // ÔÚ×îÖÕÍ¼ÏñËù·Ö¸îµÄÇøÓò½øĞĞÊı×Ö±àºÅ
     cv::Point point;
     for (int i = 0; i < num_samples; i++) {
         point.x = (int)(samples_[i].x * 600);
@@ -89,14 +82,14 @@ int main( )
     imshow("Final", wshed);
     end = clock();
     cout << "Time "<<(double)(end-start)/CLOCKS_PER_SEC<<"s"<<endl;
-    // ç­‰å¾…æŒ‰é”®ä»¥ä¿æŒçª—å£æ‰“å¼€
+    // µÈ´ı°´¼üÒÔ±£³Ö´°¿Ú´ò¿ª
     waitKey();
 }
 
-// å‡½æ•°ï¼šæ ¹æ®æ•´æ•°å€¼ç”Ÿæˆéšæœºé¢œè‰²
+// º¯Êı£º¸ù¾İÕûÊıÖµÉú³ÉËæ»úÑÕÉ«
 Vec3b RandomColor(int value)
 {
-    value = value % 255;  // ç¡®ä¿å€¼åœ¨æœ‰æ•ˆçš„é¢œè‰²èŒƒå›´å†…ï¼ˆ0-255ï¼‰
+    value = value % 255;  // È·±£ÖµÔÚÓĞĞ§µÄÑÕÉ«·¶Î§ÄÚ£¨0-255£©
     RNG rng;
     int aa = rng.uniform(0, value);
     int bb = rng.uniform(0, value);

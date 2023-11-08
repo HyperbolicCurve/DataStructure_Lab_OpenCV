@@ -5,25 +5,26 @@
 		<Option title="OpenCV"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\OpenCV\;CMake Files\OpenCV\opencv\;CMake Files\OpenCV\opencv\MinGW-build\;CMake Files\OpenCV\opencv\MinGW-build\install\;CMake Files\OpenCV\opencv\MinGW-build\install\x64\;CMake Files\OpenCV\opencv\MinGW-build\install\x64\mingw\;CMake Files\OpenCV\opencv\MinGW-build\install\x64\mingw\lib\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug"/>
+				<Option working_dir="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="OpenCV">
-				<Option output="C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug/OpenCV.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug"/>
+				<Option output="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug/OpenCV.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="E:/OpenCV/opencv/MinGW-build/install/include"/>
 					<Add directory="E:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../include/c++/13.2.0"/>
 					<Add directory="E:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../include/c++/13.2.0/x86_64-w64-mingw32"/>
 					<Add directory="E:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../include/c++/13.2.0/backward"/>
@@ -32,19 +33,20 @@
 					<Add directory="E:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/include-fixed"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 OpenCV"/>
-					<CompileFile command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 OpenCV"/>
+					<CompileFile command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="OpenCV/fast">
-				<Option output="C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug/OpenCV.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug"/>
+				<Option output="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug/OpenCV.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="E:/OpenCV/opencv/MinGW-build/install/include"/>
 					<Add directory="E:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../include/c++/13.2.0"/>
 					<Add directory="E:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../include/c++/13.2.0/x86_64-w64-mingw32"/>
 					<Add directory="E:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../include/c++/13.2.0/backward"/>
@@ -53,38 +55,65 @@
 					<Add directory="E:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/include-fixed"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 OpenCV/fast"/>
-					<CompileFile command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 OpenCV/fast"/>
+					<CompileFile command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug"/>
+				<Option working_dir="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug"/>
+				<Option working_dir="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="E:/msys64/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/Hyper/CLionProjects/OpenCV/main.cpp">
+		<Unit filename="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/4_Color.cpp">
 			<Option target="OpenCV"/>
 		</Unit>
-		<Unit filename="C:/Users/Hyper/CLionProjects/OpenCV/CMakeLists.txt">
+		<Unit filename="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/4_Color.h">
+			<Option target="OpenCV"/>
+		</Unit>
+		<Unit filename="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/Watershed.cpp">
+			<Option target="OpenCV"/>
+		</Unit>
+		<Unit filename="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/poisson.cpp">
+			<Option target="OpenCV"/>
+		</Unit>
+		<Unit filename="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/poisson.h">
+			<Option target="OpenCV"/>
+		</Unit>
+		<Unit filename="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/OpenCV/opencv/MinGW-build/install/OpenCVConfig-version.cmake">
+			<Option virtualFolder="CMake Files\OpenCV\opencv\MinGW-build\install\"/>
+		</Unit>
+		<Unit filename="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/OpenCV/opencv/MinGW-build/install/OpenCVConfig.cmake">
+			<Option virtualFolder="CMake Files\OpenCV\opencv\MinGW-build\install\"/>
+		</Unit>
+		<Unit filename="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/OpenCV/opencv/MinGW-build/install/x64/mingw/lib/OpenCVConfig.cmake">
+			<Option virtualFolder="CMake Files\OpenCV\opencv\MinGW-build\install\x64\mingw\lib\"/>
+		</Unit>
+		<Unit filename="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/OpenCV/opencv/MinGW-build/install/x64/mingw/lib/OpenCVModules-release.cmake">
+			<Option virtualFolder="CMake Files\OpenCV\opencv\MinGW-build\install\x64\mingw\lib\"/>
+		</Unit>
+		<Unit filename="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/OpenCV/opencv/MinGW-build/install/x64/mingw/lib/OpenCVModules.cmake">
+			<Option virtualFolder="CMake Files\OpenCV\opencv\MinGW-build\install\x64\mingw\lib\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>
