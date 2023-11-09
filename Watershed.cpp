@@ -40,8 +40,14 @@ int main( )
 
  	// 构建邻接表
     std::unordered_map<int, Node_1> adjacencyList = BuildAdjacencyList(marks);
+
 	// 使用回溯法为图着色
-	//GraphColoring(adjacencyList, num_samples);
+	ColorGraph(adjacencyList);
+
+	// 打印每个区域的颜色
+	for (auto& node : adjacencyList) {
+		std::cout << "Label: " << node.first << " Color: " << node.second.color << std::endl;
+	}
 
 	// 创建一个用于分水岭算法结果的矩阵
 	Mat afterWatershed;
