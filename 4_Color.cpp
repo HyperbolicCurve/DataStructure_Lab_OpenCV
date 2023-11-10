@@ -84,51 +84,105 @@ int findMaxDegreeNode(std::unordered_map<int, Node_1>& AdjacencyList) {
 	return maxDegreeNode;
 }
 
-void ColorGraph(std::unordered_map<int, Node_1>& AdjacencyList) {
-	std::queue<int> q;
+void ColorGraph(std::unordered_map<int, Node_1>& AdjacencyList, int NodesNum, const cv::Mat& watershedResult) {
+	//寻找度数最大的节点
 	int maxDegreeNode = findMaxDegreeNode(AdjacencyList);
-	AdjacencyList[maxDegreeNode].color = -1;
+	//设置一个长度为5的bool颜色数组
+	bool colorUsed[5] = {false, false, false, false, false};
+	//设置一个长度为节点数的数组，用于保存节点的颜色
+	int* colors = new int[NodesNum];
+	//设置一个长度为节点数的数组，用于记录节点是否被访问过
+	bool* visited = new bool[NodesNum];
+	//初始化颜色数组和访问数组
+	for (int i = 0; i < NodesNum; ++i) {
+		colors[i] = -1;
+		visited[i] = false;
+	}
+	//设置一个长度为节点数的队列，用于保存节点
+	std::queue<int> q;
 	q.push(maxDegreeNode);
+	visited[maxDegreeNode] = true;
 
-	while (!q.empty()) {
-		int color;
-		std::stack<Node_1> s;
+	while(!q.empty())
+	{
 		int nodeLabel = q.front();
 		q.pop();
-		Node_1 node = AdjacencyList[nodeLabel];
 
-		if (AdjacencyList[nodeLabel].color != 0) {
-			continue;
-		}
-
-		for (color = 1; color <= 4; ++color) {
-			if (isSafeColor(AdjacencyList, nodeLabel, color)) {
-				AdjacencyList[nodeLabel].color = color;
-				// 压入栈中
-				s.push(node);
-				break;
-			}
-		}
-
-		if (color == 4 && !isSafeColor(AdjacencyList, nodeLabel, color)) {
-			while (!s.empty()) {
-				int topColor = AdjacencyList[s.top().label].color;
-				s.pop();
-				if (topColor < 4 && isSafeColor(AdjacencyList, nodeLabel, topColor + 1)) {
-					AdjacencyList[nodeLabel].color = topColor + 1;
-					s.push(node);
-					break;
-				}
-			}
+		for(int t = 1; t<= 4; ++t)
+		{
+			colorUsed[t] = false;
 		}
 
 		for (int neighborLabel : AdjacencyList[nodeLabel].neighbors) {
-			if (AdjacencyList[neighborLabel].color == -1) {
-				AdjacencyList[neighborLabel].color = 0;
+			if (!visited[neighborLabel]) {
 				q.push(neighborLabel);
+				visited[neighborLabel] = true;
+			}
+			if (colors[neighborLabel] != -1) {
+				colorUsed[colors[neighborLabel]] = true;
 			}
 		}
+
+		for(int i = 1; i <= 4; ++i)
+		{
+			if(!colorUsed[i])
+			{
+				colors[nodeLabel] = i;
+				break;
+			}
+		}
+		if(colors[nodeLabel] == -1)
+		{
+			colors[nodeLabel] = 0;
+		}
 	}
+
+	unsigned char recolor[5][3];
+	for(int i = 0; i < 5; ++i)
+	{
+		recolor[i][0] = 0;
+		recolor[i][1] = 0;
+		recolor[i][2] = 0;
+	}
+
+	recolor[0][0] = 255;
+	recolor[0][1] = 255;
+	recolor[0][2] = 255;
+
+	recolor[1][0] = 255;
+	recolor[2][1] = 255;
+	recolor[3][2] = 255;
+
+	// 设置为黄色
+	recolor[4][0] = 255;
+	recolor[4][1] = 255;
+	recolor[4][2] = 0;
+
+	cv::Mat recolorMat(watershedResult.rows, watershedResult.cols, CV_8UC3);
+
+	for(int i = 0; i < watershedResult.rows; ++i)
+	{
+		for(int j = 0; j < watershedResult.cols; ++j)
+		{
+			int label = watershedResult.at<int>(i, j);
+			if(label == -1)
+			{
+				continue;
+			}
+			int col = colors[label];
+			if(col == 0)
+			{
+				col = 4;
+			}
+			recolorMat.at<cv::Vec3b>(i, j)[0] = recolor[col][0];
+			recolorMat.at<cv::Vec3b>(i, j)[1] = recolor[col][1];
+			recolorMat.at<cv::Vec3b>(i, j)[2] = recolor[col][2];
+		}
+	}
+	cv::imshow("recolor", recolorMat);
+	cv::waitKey();
+	delete[] colors;
+	delete[] visited;
 }
 
 
