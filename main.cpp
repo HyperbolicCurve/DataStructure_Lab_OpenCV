@@ -38,16 +38,8 @@ int main( )
     // 应用分水岭算法对图像进行分割
     watershed(image, marks);
 
- 	// 构建邻接表
-    std::unordered_map<int, Node_1> adjacencyList = BuildAdjacencyList(marks);
-
-	// 使用回溯法为图着色
-	ColorGraph(adjacencyList);
-
-	// 打印每个区域的颜色
-	for (auto& node : adjacencyList) {
-		std::cout << "Label: " << node.first << " Color: " << node.second.color << std::endl;
-	}
+	Mat FourColor(marks.size(), CV_8UC3);
+	fourColor(marks, FourColor, num_samples, t2);
 
 	// 创建一个用于分水岭算法结果的矩阵
 	Mat afterWatershed;

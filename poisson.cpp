@@ -1,6 +1,6 @@
 #include "poisson.h"
 #define desired_samples1 100000   // 所需样本数
-#define TestNum 100                // 每个样本的测试次数
+#define TestNum 90                // 每个样本的测试次数
 int grid_n;                       // 网格大小
 
 double dx, inv_dx, radius;       // 用于圆盘采样的变量
@@ -62,7 +62,6 @@ int poisson_disk_sample(int desired_samples, int **grid, Vector2 samples[]) {
             }
         }
     }
-
     return tail;
 }
 

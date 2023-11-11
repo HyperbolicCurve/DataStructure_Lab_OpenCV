@@ -88,7 +88,7 @@
 		<Unit filename="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/4_Color.h">
 			<Option target="OpenCV"/>
 		</Unit>
-		<Unit filename="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/Watershed.cpp">
+		<Unit filename="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/main.cpp">
 			<Option target="OpenCV"/>
 		</Unit>
 		<Unit filename="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/poisson.cpp">

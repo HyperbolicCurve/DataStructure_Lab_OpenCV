@@ -152,29 +152,29 @@ OpenCV/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenCV.dir\build.make CMakeFiles/OpenCV.dir/4_Color.cpp.s
 .PHONY : 4_Color.cpp.s
 
-Watershed.obj: Watershed.cpp.obj
-.PHONY : Watershed.obj
+main.obj: main.cpp.obj
+.PHONY : main.obj
 
 # target to build an object file
-Watershed.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenCV.dir\build.make CMakeFiles/OpenCV.dir/Watershed.cpp.obj
-.PHONY : Watershed.cpp.obj
+main.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenCV.dir\build.make CMakeFiles/OpenCV.dir/main.cpp.obj
+.PHONY : main.cpp.obj
 
-Watershed.i: Watershed.cpp.i
-.PHONY : Watershed.i
+main.i: main.cpp.i
+.PHONY : main.i
 
 # target to preprocess a source file
-Watershed.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenCV.dir\build.make CMakeFiles/OpenCV.dir/Watershed.cpp.i
-.PHONY : Watershed.cpp.i
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenCV.dir\build.make CMakeFiles/OpenCV.dir/main.cpp.i
+.PHONY : main.cpp.i
 
-Watershed.s: Watershed.cpp.s
-.PHONY : Watershed.s
+main.s: main.cpp.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-Watershed.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenCV.dir\build.make CMakeFiles/OpenCV.dir/Watershed.cpp.s
-.PHONY : Watershed.cpp.s
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenCV.dir\build.make CMakeFiles/OpenCV.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 poisson.obj: poisson.cpp.obj
 .PHONY : poisson.obj
@@ -212,9 +212,9 @@ help:
 	@echo ... 4_Color.obj
 	@echo ... 4_Color.i
 	@echo ... 4_Color.s
-	@echo ... Watershed.obj
-	@echo ... Watershed.i
-	@echo ... Watershed.s
+	@echo ... main.obj
+	@echo ... main.i
+	@echo ... main.s
 	@echo ... poisson.obj
 	@echo ... poisson.i
 	@echo ... poisson.s

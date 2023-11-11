@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 add_executable(OpenCV
         poisson.cpp
         poisson.h
-        Watershed.cpp
+        main.cpp
         4_Color.cpp
         4_Color.h
 )
