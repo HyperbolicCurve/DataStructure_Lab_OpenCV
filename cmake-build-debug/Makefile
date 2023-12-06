@@ -152,6 +152,54 @@ OpenCV/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenCV.dir\build.make CMakeFiles/OpenCV.dir/4_Color.cpp.s
 .PHONY : 4_Color.cpp.s
 
+Area_Search.obj: Area_Search.cpp.obj
+.PHONY : Area_Search.obj
+
+# target to build an object file
+Area_Search.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenCV.dir\build.make CMakeFiles/OpenCV.dir/Area_Search.cpp.obj
+.PHONY : Area_Search.cpp.obj
+
+Area_Search.i: Area_Search.cpp.i
+.PHONY : Area_Search.i
+
+# target to preprocess a source file
+Area_Search.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenCV.dir\build.make CMakeFiles/OpenCV.dir/Area_Search.cpp.i
+.PHONY : Area_Search.cpp.i
+
+Area_Search.s: Area_Search.cpp.s
+.PHONY : Area_Search.s
+
+# target to generate assembly for a file
+Area_Search.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenCV.dir\build.make CMakeFiles/OpenCV.dir/Area_Search.cpp.s
+.PHONY : Area_Search.cpp.s
+
+Huffman.obj: Huffman.cpp.obj
+.PHONY : Huffman.obj
+
+# target to build an object file
+Huffman.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenCV.dir\build.make CMakeFiles/OpenCV.dir/Huffman.cpp.obj
+.PHONY : Huffman.cpp.obj
+
+Huffman.i: Huffman.cpp.i
+.PHONY : Huffman.i
+
+# target to preprocess a source file
+Huffman.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenCV.dir\build.make CMakeFiles/OpenCV.dir/Huffman.cpp.i
+.PHONY : Huffman.cpp.i
+
+Huffman.s: Huffman.cpp.s
+.PHONY : Huffman.s
+
+# target to generate assembly for a file
+Huffman.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\OpenCV.dir\build.make CMakeFiles/OpenCV.dir/Huffman.cpp.s
+.PHONY : Huffman.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -212,6 +260,12 @@ help:
 	@echo ... 4_Color.obj
 	@echo ... 4_Color.i
 	@echo ... 4_Color.s
+	@echo ... Area_Search.obj
+	@echo ... Area_Search.i
+	@echo ... Area_Search.s
+	@echo ... Huffman.obj
+	@echo ... Huffman.i
+	@echo ... Huffman.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

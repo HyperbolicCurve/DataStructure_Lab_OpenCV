@@ -92,7 +92,7 @@ public:
 // 创建邻接表
 Graph CreateAdjList(const Mat& markers, int vernum);
 // 四色着色
-void fourColor(const Mat& markers, Mat& filled, int vernum, clock_t & end);
+void fourColor(const Mat& markers, Mat& filled, int vernum);
 // 随机着色
 void randomColorDye(const Mat& markers, Mat& filled, int vernum);
 // 最大度优先着色

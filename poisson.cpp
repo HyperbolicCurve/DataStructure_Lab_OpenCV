@@ -66,11 +66,10 @@ int poisson_disk_sample(int desired_samples, int **grid, Vector2 samples[]) {
 }
 
 // 使用泊松盘采样找到点的函数
-int findPoint(cv::Mat marks, Vector2 samples[], int* num_samples, clock_t *start) {
+int findPoint(cv::Mat marks, Vector2 samples[], int* num_samples) {
     int desired_samples ;
     std::cout << "Enter the number of the seeds:" << std::endl;
     std::cin >> desired_samples;
-    *start = clock();
     double a ;
     a = pow(1 * 1.0 / desired_samples, 0.5);
     radius = a;

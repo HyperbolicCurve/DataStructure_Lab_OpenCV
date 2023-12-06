@@ -9,6 +9,10 @@ add_executable(OpenCV
         main.cpp
         4_Color.cpp
         4_Color.h
+        Huffman.cpp
+        Huffman.h
+        Area_Search.cpp
+        Area_Search.h
 )
 
 set(OpenCV_DIR E:/OpenCV/opencv/MinGW-build/install)

@@ -88,6 +88,18 @@
 		<Unit filename="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/4_Color.h">
 			<Option target="OpenCV"/>
 		</Unit>
+		<Unit filename="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/Area_Search.cpp">
+			<Option target="OpenCV"/>
+		</Unit>
+		<Unit filename="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/Area_Search.h">
+			<Option target="OpenCV"/>
+		</Unit>
+		<Unit filename="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/Huffman.cpp">
+			<Option target="OpenCV"/>
+		</Unit>
+		<Unit filename="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/Huffman.h">
+			<Option target="OpenCV"/>
+		</Unit>
 		<Unit filename="C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/main.cpp">
 			<Option target="OpenCV"/>
 		</Unit>

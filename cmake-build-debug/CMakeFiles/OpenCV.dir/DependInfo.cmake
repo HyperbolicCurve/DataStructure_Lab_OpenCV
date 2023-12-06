@@ -9,6 +9,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/4_Color.cpp" "CMakeFiles/OpenCV.dir/4_Color.cpp.obj" "gcc" "CMakeFiles/OpenCV.dir/4_Color.cpp.obj.d"
+  "C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/Area_Search.cpp" "CMakeFiles/OpenCV.dir/Area_Search.cpp.obj" "gcc" "CMakeFiles/OpenCV.dir/Area_Search.cpp.obj.d"
+  "C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/Huffman.cpp" "CMakeFiles/OpenCV.dir/Huffman.cpp.obj" "gcc" "CMakeFiles/OpenCV.dir/Huffman.cpp.obj.d"
   "C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/main.cpp" "CMakeFiles/OpenCV.dir/main.cpp.obj" "gcc" "CMakeFiles/OpenCV.dir/main.cpp.obj.d"
   "C:/Users/Hyper/CLionProjects/DataStructure_Lab_OpenCV/poisson.cpp" "CMakeFiles/OpenCV.dir/poisson.cpp.obj" "gcc" "CMakeFiles/OpenCV.dir/poisson.cpp.obj.d"
   )

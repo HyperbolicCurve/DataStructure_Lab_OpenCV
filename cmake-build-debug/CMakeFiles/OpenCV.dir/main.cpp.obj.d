@@ -368,4 +368,5 @@ CMakeFiles/OpenCV.dir/main.cpp.obj: \
  E:/OpenCV/opencv/MinGW-build/install/include/opencv2/imgproc/imgproc.hpp \
  E:/OpenCV/opencv/MinGW-build/install/include/opencv2\imgproc\types_c.h \
  E:/OpenCV/opencv/MinGW-build/install/include/opencv2/core/core_c.h \
- E:/OpenCV/opencv/MinGW-build/install/include/opencv2/core/types_c.h
+ E:/OpenCV/opencv/MinGW-build/install/include/opencv2/core/types_c.h \
+ C:\Users\Hyper\CLionProjects\DataStructure_Lab_OpenCV\Area_Search.h

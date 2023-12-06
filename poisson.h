@@ -24,6 +24,6 @@ typedef struct {
 
 bool check_collision(Vector2 p, int index, int **grid, Vector2 samples[]);
 int poisson_disk_sample(int desired_samples, int **grid, Vector2 samples[]);
-int findPoint(cv::Mat marks, Vector2 samples[], int* num_samples, clock_t* start);
+int findPoint(cv::Mat marks, Vector2 samples[], int* num_samples);
 
 #endif //OPENCV_POISSON_H

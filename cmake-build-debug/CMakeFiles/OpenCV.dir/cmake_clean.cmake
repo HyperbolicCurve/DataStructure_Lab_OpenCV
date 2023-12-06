@@ -1,6 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/OpenCV.dir/4_Color.cpp.obj"
   "CMakeFiles/OpenCV.dir/4_Color.cpp.obj.d"
+  "CMakeFiles/OpenCV.dir/Area_Search.cpp.obj"
+  "CMakeFiles/OpenCV.dir/Area_Search.cpp.obj.d"
+  "CMakeFiles/OpenCV.dir/Huffman.cpp.obj"
+  "CMakeFiles/OpenCV.dir/Huffman.cpp.obj.d"
   "CMakeFiles/OpenCV.dir/main.cpp.obj"
   "CMakeFiles/OpenCV.dir/main.cpp.obj.d"
   "CMakeFiles/OpenCV.dir/poisson.cpp.obj"
